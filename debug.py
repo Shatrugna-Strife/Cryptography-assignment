@@ -29,7 +29,8 @@ key = "bits@f463"
 key_bv = BitVector(bitlist = [0]*BLOCKSIZE)                                   #(N)
 for i in range(0,len(key) // numbytes):                                       #(O)
     keyblock = key[i*numbytes:(i+1)*numbytes]                                 #(P)
-    key_bv ^= BitVector( textstring = keyblock )                              #(Q)
+    key_bv ^= BitVector( textstring = keyblock )
+print(key_bv)                              #(Q)
 
 # Create a bitvector for storing the ciphertext bit array:
 msg_encrypted_bv = BitVector( size = 0 )
