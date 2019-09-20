@@ -12,14 +12,16 @@ for i in range(0,len(PassPhrase) // numbytes):
     textstr = PassPhrase[i*numbytes:(i+1)*numbytes]
     bv_iv ^= BitVector.BitVector( textstring = textstr )
 
-key = "bits@f463"
+# key = "bits@f463"
+key = input("Please enter the key:")
 
 key_bv = BitVector.BitVector(bitlist = [0]*BLOCKSIZE)
 for i in range(0,len(key) // numbytes):
     keyblock = key[i*numbytes:(i+1)*numbytes]
     key_bv ^= BitVector.BitVector( textstring = keyblock )
 
-f = open("encrypt.txt", "r")
+# f = open("encrypt.txt", "r")
+f = open("ciphertext.txt", "r")
 hex = f.read()
 # print(len(hex))
 bv = BitVector.BitVector(hexstring = hex)
@@ -42,8 +44,5 @@ for i in range(len(bv)//BLOCKSIZE):
     previous_block = temp_read
     msg_bv += bv_read
 
-f_1 = open("plaintext.txt", 'r')
-bin = f_1.read()
-bv_1 = BitVector.BitVector(textstring = bin)
 msg_bv = msg_bv.get_bitvector_in_ascii()
 print(msg_bv)

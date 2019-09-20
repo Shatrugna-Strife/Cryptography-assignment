@@ -13,7 +13,8 @@ for i in range(0,len(PassPhrase) // numbytes):
     bv_iv ^= BitVector.BitVector( textstring = textstr )
 
 
-f = open("encrypt.txt", "r")
+# f = open("encrypt.txt", "r")
+f = open("ciphertext.txt", "r")
 hex = f.read()
 # print(len(hex))
 bv = BitVector.BitVector(hexstring = hex)
@@ -93,6 +94,7 @@ for i in range(1, len(decrypt_list)):
         max_i_t = temp_t
         max_i = i
 print(decrypt_list[max_i][0], decrypt_list[max_i][1])
+# print(len(decrypt_list))
 
-
-print(len(decrypt_list))
+fr = open("recoveredtext.txt", 'w')
+fr.write(decrypt_list[max_i][0])
